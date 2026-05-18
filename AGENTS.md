@@ -1,0 +1,44 @@
+# Repository Guidelines
+
+## Project Structure & Module Organization
+
+This repository currently contains planning and design assets for the La Table d'Amy static website.
+
+- `PROJECT_CONTEXT.md`: product goals, preferred stack, site structure, design direction, and deployment notes.
+- `TODO.md`: task tracking placeholder.
+- `mockups/mockup.png`: visual reference for the warm, rustic French-country design.
+
+When implementation begins, keep the site simple and static. Prefer `src/pages/` for routes, `src/components/` for reusable markup, `src/content/` or `src/data/` for editable Markdown/YAML content, and `public/` for optimized images, SVGs, and fonts.
+
+## Build, Test, and Development Commands
+
+No package manifest exists yet, so there are no runnable commands. After the Astro scaffold is added, keep this section aligned with `package.json`.
+
+Expected examples:
+
+- `npm install`: install dependencies.
+- `npm run dev`: run the local Astro dev server.
+- `npm run build`: generate the static site for Cloudflare Pages.
+- `npm run preview`: preview the production build locally.
+
+## Coding Style & Naming Conventions
+
+Use concise, content-first HTML/Astro components and minimal JavaScript. Keep CSS lightweight; avoid heavy UI libraries and animation packages. Use 2-space indentation for markup, styles, JSON, and YAML.
+
+Name Astro components in `PascalCase`, such as `MenuPreview.astro`. Use kebab-case for routes and assets, such as `wine-pairing.webp`. Content files should use clear names Amy can recognize, such as `menus.yaml` or `extras.md`.
+
+## Testing Guidelines
+
+There is no test framework configured yet. For the first implementation, at minimum run the production build before submitting changes. If logic grows beyond static rendering, add focused tests for content parsing and formatting.
+
+Validate content changes by checking the affected page locally, optimizing images, adding accessible text, and keeping pages usable without client-side JavaScript.
+
+## Commit & Pull Request Guidelines
+
+This directory is not currently initialized as a Git repository, so no local commit history conventions are available. Use short, imperative commit messages, for example `Add homepage menu preview` or `Update extras content`.
+
+Pull requests should include a brief summary, the pages or content files changed, screenshots for visual changes, and any build or preview command results. Link related tasks or notes from `TODO.md` when applicable.
+
+## Security & Configuration Tips
+
+Do not add databases, admin panels, embedded widgets, or secrets for v1. Keep deployment static through Cloudflare Pages. Store public configuration in versioned files, and keep private credentials out of the repository.
