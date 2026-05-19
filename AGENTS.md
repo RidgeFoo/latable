@@ -22,6 +22,22 @@ Key commands:
 - `npm run preview`: preview the production build locally.
 - `npm test`: build the site, start Astro preview, and run Playwright checks.
 
+## Local Server Process Handling
+
+When starting long-running local servers such as `npm run dev` or `npm run preview`, run them in an interactive TTY session so they can be stopped gracefully after checks are complete.
+
+Preferred workflow:
+- Start preview with a TTY-enabled tool/session.
+- Run Playwright or browser checks against the preview URL.
+- Stop the server by sending `Ctrl-C` to the running session.
+- Do not use `kill`, `pkill`, or port-based process termination unless graceful shutdown fails.
+
+Example intent:
+
+```text
+Start `npm run preview -- --host 127.0.0.1 --port 4321` in a TTY session, then stop it with Ctrl-C after screenshots/tests are complete.
+```
+
 ## Coding Style & Naming Conventions
 
 Use concise, content-first HTML/Astro components and minimal JavaScript. Keep CSS lightweight; avoid heavy UI libraries and animation packages. Use 2-space indentation for markup, styles, JSON, and YAML.
