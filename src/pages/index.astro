@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import MenuCard from '@/components/MenuCard.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import { getExtras, getMenusWithDesserts, getSettings } from '@/lib/content.js';
+
+const settings = getSettings();
+const menus = getMenusWithDesserts().filter((menu) => menu.featured);
+const extras = getExtras().filter((extra) => extra.featured);
+---
+
+<BaseLayout title={`${settings.business.name} | Meal delivery in the Gers`} description={settings.business.tagline}>
+  <main class="page-shell">
+    <SiteHeader settings={settings} />
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <img class="sprig-mark hero-sprig" src="/images/olive-sprig-mark.webp" alt="" width="96" height="40" />
+        <h1 id="hero-title">Home-cooked meals delivered to your gîte in the Gers</h1>
+        <p>Relax and enjoy your stay. Amy prepares and delivers delicious, seasonal meals straight to your door.</p>
+        <p class="bookended-action"><a class="button" href="/menus">View Menus</a></p>
+      </div>
+      <img class="hero-image print-art" src="/images/hero-gers-countryside-ink.webp" alt="Sepia engraving of a farmhouse in the Gers countryside" width="1774" height="760" />
+    </section>
+
+    <section class="about-band">
+      <img class="portrait print-art" src="/images/amy-portrait-engraving-ink.webp" alt="Sepia engraving portrait of Amy" width="1254" height="1254" />
+      <div>
+        <SectionTitle>About Amy</SectionTitle>
+        <p>I love to cook nourishing, flavourful food using the best local ingredients. Whether you are here for a weekend escape or a longer holiday, I will take care of the cooking so you can focus on making memories.</p>
+        <p>All meals are home-cooked, delivered ready to heat and enjoy.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <SectionTitle>Our Menus</SectionTitle>
+      <div class="menu-grid">
+        {menus.map((menu) => <MenuCard menu={menu} priceLabel={settings.pricing.menuPriceLabel} />)}
+      </div>
+      <p class="centered bookended-action"><a class="button" href="/menus">View Full Menus</a></p>
+    </section>
+
+    <section class="extras-preview" aria-label="Extras preview">
+      {extras.map((extra) => (
+        <article>
+          <img class="extra-art print-art" src={extra.slug === 'fridge-stock' ? '/images/fridge-stock-engraving-ink.webp' : '/images/celebration-cake-engraving-ink.webp'} alt="" width="300" height="300" />
+          <div>
+            <h2>{extra.title}</h2>
+            <p>{extra.summary}</p>
+            <a href="/extras">Learn more</a>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="section">
+      <SectionTitle>How It Works</SectionTitle>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Choose</h3>
+          <p>Browse the menus and extras and let Amy know what you need.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Amy cooks & delivers</h3>
+          <p>Everything is prepared with care and delivered to your gîte.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>You enjoy</h3>
+          <p>Heat, serve and enjoy delicious home-cooked food.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-band">
+      <aside class="contact-card">
+        <SectionTitle>Enquire</SectionTitle>
+        <p>Amy would love to help make your stay even more memorable.</p>
+        <p><a href={`tel:${settings.contact.phone}`}>{settings.contact.phone}</a></p>
+        <p><a href={`mailto:${settings.contact.email}`}>{settings.contact.email}</a></p>
+        <p>{settings.business.area}</p>
+      </aside>
+      <form class="enquiry-form" action={`mailto:${settings.contact.email}`} method="post" enctype="text/plain">
+        <label>
+          <span>Your name</span>
+          <input name="name" autocomplete="name" />
+        </label>
+        <label>
+          <span>Email address</span>
+          <input name="email" type="email" autocomplete="email" />
+        </label>
+        <label>
+          <span>Preferred date</span>
+          <input name="date" type="date" />
+        </label>
+        <label>
+          <span>Number of guests</span>
+          <input name="guests" type="number" min="1" />
+        </label>
+        <label class="full">
+          <span>Tell Amy about your stay</span>
+          <textarea name="message" rows="5"></textarea>
+        </label>
+        <button class="button" type="submit">Send Enquiry</button>
+      </form>
+    </section>
+
+    <SiteFooter settings={settings} />
+  </main>
+</BaseLayout>

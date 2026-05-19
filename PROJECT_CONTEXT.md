@@ -580,7 +580,9 @@ src/
 
   assets/
     paper-texture.avif
-    olive-sprig.svg
+    olive-branch-ornament.webp
+    olive-sprig-mark.webp
+    bookend-sprig.webp
     divider.svg
     corner-ornament.svg
     countryside.avif

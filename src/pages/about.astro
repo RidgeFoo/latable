@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import { getSettings } from '@/lib/content.js';
+
+const settings = getSettings();
+---
+
+<BaseLayout title={`About | ${settings.business.name}`} description="About Amy and La Table d'Amy">
+  <main class="page-shell">
+    <SiteHeader settings={settings} />
+    <section class="about-band standalone">
+      <img class="portrait print-art" src="/images/amy-portrait-engraving-ink.webp" alt="Sepia engraving portrait of Amy" width="1254" height="1254" />
+      <div>
+        <SectionTitle>About Amy</SectionTitle>
+        <p>La Table d'Amy is a personal meal delivery service for guests staying in gîtes in the Gers. The food is generous, seasonal and designed for relaxed evenings after days spent exploring the countryside.</p>
+        <p>Amy cooks meals that arrive ready to heat, serve and share, with simple instructions and room for dietary notes when you enquire.</p>
+      </div>
+    </section>
+    <SiteFooter settings={settings} />
+  </main>
+</BaseLayout>

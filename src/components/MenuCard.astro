@@ -1,0 +1,32 @@
+---
+const { menu, priceLabel, detailed = false } = Astro.props;
+const mains = detailed ? menu.mains : menu.mains.slice(0, 3);
+---
+
+<article class="menu-card">
+  <h3>{menu.title}</h3>
+  <p class="price">€{menu.price}</p>
+  <p class="price-label">{priceLabel}</p>
+  <p>{menu.summary}</p>
+  <ul class="dish-list">
+    {mains.map((main) => (
+      <li>
+        <strong>{main.title}</strong>
+        <span>{main.description}</span>
+      </li>
+    ))}
+  </ul>
+  {detailed && menu.dessertOptions?.length > 0 && (
+    <div class="desserts">
+      <h4>Dessert options</h4>
+      <ul>
+        {menu.dessertOptions.map((dessert) => (
+          <li>
+            <strong>{dessert.title}</strong>
+            <span>{dessert.description}{dessert.supplement ? ` (+€${dessert.supplement})` : ''}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</article>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import { getExtras, getSettings } from '@/lib/content.js';
+
+const settings = getSettings();
+const extras = getExtras();
+---
+
+<BaseLayout title={`Extras | ${settings.business.name}`} description="Fridge stock service and celebration extras in the Gers">
+  <main class="page-shell">
+    <SiteHeader settings={settings} />
+    <section class="page-intro">
+      <SectionTitle>Extras</SectionTitle>
+      <p>Add a little more ease to your stay with thoughtful extras prepared before or during your holiday.</p>
+    </section>
+    <section class="feature-list">
+      {extras.map((extra) => (
+        <article>
+          <img class="extra-art print-art" src={extra.slug === 'fridge-stock' ? '/images/fridge-stock-engraving-ink.webp' : '/images/celebration-cake-engraving-ink.webp'} alt="" width="320" height="320" />
+          <div>
+            <h2>{extra.title}</h2>
+            <p>{extra.summary}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+    <SiteFooter settings={settings} />
+  </main>
+</BaseLayout>

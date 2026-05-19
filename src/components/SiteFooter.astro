@@ -1,0 +1,15 @@
+---
+const { settings } = Astro.props;
+---
+
+<footer class="site-footer">
+  <img src="/images/olive-branch-ornament.webp" alt="" width="92" height="22" />
+  <nav aria-label="Footer navigation">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/menus">Menus</a>
+    <a href="/extras">Extras</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <p>© 2026 {settings.business.name} | Meal delivery in the Gers</p>
+</footer>

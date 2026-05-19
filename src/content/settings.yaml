@@ -1,0 +1,16 @@
+business:
+  name: "La Table d'Amy"
+  tagline: "Home-cooked meals delivered to your gîte in the Gers"
+  area: "Gers, France"
+
+contact:
+  email: "bonjour@latabledamy.fr"
+  phone: "+33 6 12 34 56 78"
+
+pricing:
+  minimumOrder: 200
+  menuPriceLabel: "per person, includes dessert"
+
+notices:
+  delivery: "Meals are delivered prepared, with simple reheating instructions."
+  allergies: "Please mention any allergies or dietary requirements when enquiring."

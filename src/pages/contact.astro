@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import { getSettings } from '@/lib/content.js';
+
+const settings = getSettings();
+---
+
+<BaseLayout title={`Contact | ${settings.business.name}`} description="Contact La Table d'Amy">
+  <main class="page-shell">
+    <SiteHeader settings={settings} />
+    <section class="page-intro">
+      <SectionTitle>Contact</SectionTitle>
+      <p>Email <a href={`mailto:${settings.contact.email}`}>{settings.contact.email}</a> or call <a href={`tel:${settings.contact.phone}`}>{settings.contact.phone}</a>.</p>
+      <p>{settings.notices.allergies}</p>
+    </section>
+    <SiteFooter settings={settings} />
+  </main>
+</BaseLayout>

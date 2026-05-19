@@ -1,0 +1,18 @@
+---
+const { settings } = Astro.props;
+---
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/" class="brand" aria-label="La Table d'Amy home">
+      <img class="sprig-mark brand-sprig" src="/images/olive-sprig-mark.webp" alt="" width="78" height="33" />
+      <span>{settings.business.name}</span>
+      <small>Meal delivery in the Gers</small>
+    </a>
+    <a href="/menus" class="nav-link">Menus</a>
+    <a href="/extras" class="nav-link">Extras</a>
+    <a href="/contact" class="button button-small">Enquire</a>
+  </nav>
+</header>

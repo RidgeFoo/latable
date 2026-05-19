@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import MenuCard from '@/components/MenuCard.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import { getMenusWithDesserts, getSettings } from '@/lib/content.js';
+
+const settings = getSettings();
+const menus = getMenusWithDesserts();
+---
+
+<BaseLayout title={`Menus | ${settings.business.name}`} description="Full menu details for La Table d'Amy">
+  <main class="page-shell">
+    <SiteHeader settings={settings} />
+    <section class="page-intro">
+      <SectionTitle>Menus</SectionTitle>
+      <p>{settings.notices.delivery}</p>
+      <p>{settings.notices.allergies}</p>
+      <p>Minimum order: €{settings.pricing.minimumOrder}</p>
+    </section>
+    <section class="menu-stack" aria-label="Full menus">
+      {menus.map((menu) => <MenuCard menu={menu} priceLabel={settings.pricing.menuPriceLabel} detailed />)}
+    </section>
+    <SiteFooter settings={settings} />
+  </main>
+</BaseLayout>
