@@ -583,8 +583,27 @@ src/
     olive-branch-ornament.webp
     olive-sprig-mark.webp
     bookend-sprig.webp
-    divider.svg
-    corner-ornament.svg
+    divider-flourish.svg
+    page-corner-flourish-source.png
+    page-border-corner-tl.webp
+    page-border-corner-tr.webp
+    page-border-corner-bl.webp
+    page-border-corner-br.webp
+    page-frame-source.png (legacy, superseded for the active page border)
+    page-frame.webp (legacy, superseded for the active page border)
+    page-corner-flourish-tl.webp
+    page-corner-flourish-tr.webp
+    page-corner-flourish-bl.webp
+    page-corner-flourish-br.webp
+    card-corner-flourish-source.png
+    card-frame-source.png
+    card-frame.webp
+    card-corner-flourish-tl.webp
+    card-corner-flourish-tr.webp
+    card-corner-flourish-bl.webp
+    card-corner-flourish-br.webp
+    form-olive-branch-source.png
+    form-olive-branch.webp
     countryside.avif
     farmhouse.avif
     cake.avif

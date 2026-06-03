@@ -53,36 +53,33 @@ img {
   min-height: 100vh;
   margin: 14px auto;
   padding: clamp(14px, 2vw, 24px);
-  border: 1px solid var(--line);
-  outline: 2px solid rgba(200, 185, 157, 0.45);
-  outline-offset: -8px;
-}
-
-.page-shell::before,
-.page-shell::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  width: 34px;
-  height: 34px;
-  border-color: rgba(138, 107, 74, 0.55);
-  pointer-events: none;
 }
 
 .page-shell::before {
-  top: 10px;
-  left: 10px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-  border-top-left-radius: 16px;
+  content: "";
+  position: absolute;
+  inset: 14px;
+  z-index: 2;
+  border: 1px solid rgba(138, 107, 74, 0.5);
+  outline: 1px solid rgba(138, 107, 74, 0.28);
+  outline-offset: 7px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .page-shell::after {
-  right: 10px;
-  bottom: 10px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  border-bottom-right-radius: 16px;
+  content: "";
+  position: absolute;
+  inset: 7px;
+  z-index: 3;
+  background:
+    url("/images/page-border-corner-tl.webp") top left / 42px 42px no-repeat,
+    url("/images/page-border-corner-tr.webp") top right / 42px 42px no-repeat,
+    url("/images/page-border-corner-bl.webp") bottom left / 42px 42px no-repeat,
+    url("/images/page-border-corner-br.webp") bottom right / 42px 42px no-repeat;
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .site-header,
@@ -129,8 +126,20 @@ img {
 }
 
 .brand small {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
   margin-top: 6px;
   font-size: 0.72rem;
+}
+
+.brand small::before {
+  content: "";
+  width: 76px;
+  height: 13px;
+  background: url("/images/divider-flourish.svg") center / contain no-repeat;
+  opacity: 0.68;
+  mix-blend-mode: multiply;
 }
 
 .nav-link,
@@ -311,26 +320,29 @@ h1 {
 .menu-card {
   position: relative;
   padding: 18px 18px;
-  border: 1px solid var(--line);
+  border: 0;
   background: rgba(255, 250, 240, 0.42);
   text-align: center;
 }
 
 .menu-card::after,
 .contact-card::after {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid rgba(138, 107, 74, 0.28);
-  pointer-events: none;
+  content: none;
 }
 
-.menu-card::before {
+.menu-card::before,
+.contact-card::before {
   content: "";
   position: absolute;
   inset: 5px;
-  border: 1px solid rgba(138, 107, 74, 0.25);
-  border-radius: 0 10px 0 10px;
+  z-index: 1;
+  border: 34px solid transparent;
+  border-image-source: url("/images/card-frame.webp");
+  border-image-slice: 58;
+  border-image-width: 34px;
+  border-image-repeat: stretch;
+  opacity: 0.58;
+  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
@@ -496,13 +508,12 @@ h1 {
 }
 
 .contact-band::after {
-  right: -38px;
-  top: 10px;
-  width: 130px;
-  height: 190px;
-  background: url("/images/olive-branch-ornament.webp") center / contain no-repeat;
-  opacity: 0.28;
-  transform: rotate(-78deg);
+  right: -110px;
+  top: -34px;
+  width: 250px;
+  height: 370px;
+  background: url("/images/form-olive-branch.webp") center / contain no-repeat;
+  opacity: 0.34;
 }
 
 .contact-card,
@@ -514,7 +525,7 @@ h1 {
 .contact-card {
   position: relative;
   padding: 18px;
-  border: 1px solid var(--line);
+  border: 0;
   text-align: center;
 }
 
@@ -562,6 +573,19 @@ textarea {
   font-size: 0.72rem;
 }
 
+.site-footer > img {
+  display: none;
+}
+
+.site-footer::before {
+  content: "";
+  width: 96px;
+  height: 18px;
+  background: url("/images/divider-flourish.svg") center / contain no-repeat;
+  opacity: 0.75;
+  mix-blend-mode: multiply;
+}
+
 .site-footer nav {
   display: flex;
   flex-wrap: wrap;
@@ -589,6 +613,11 @@ textarea {
 
   .hero-image {
     height: clamp(250px, 82vw, 380px);
+  }
+
+  .contact-band::before,
+  .contact-band::after {
+    content: none;
   }
 
   .about-band,
