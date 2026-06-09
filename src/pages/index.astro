@@ -28,7 +28,7 @@ const extras = getExtras().filter((extra) => extra.featured);
     <section class="about-band">
       <img class="portrait print-art" src="/images/amy-portrait-engraving-ink.webp" alt="Sepia engraving portrait of Amy" width="1254" height="1254" />
       <div>
-        <SectionTitle>About Amy</SectionTitle>
+        <div id="about-title"><h2>ABOUT AMY</h2><img id="about-flourish" src="/images/olive-sprig-mark.webp"></div>
         <p>I love to cook nourishing, flavourful food using the best local ingredients. Whether you are here for a weekend escape or a longer holiday, I will take care of the cooking so you can focus on making memories.</p>
         <p>All meals are home-cooked, delivered ready to heat and enjoy.</p>
       </div>
@@ -49,7 +49,7 @@ const extras = getExtras().filter((extra) => extra.featured);
           <div>
             <h2>{extra.title}</h2>
             <p>{extra.summary}</p>
-            <a href="/extras">Learn more</a>
+            <a href="/extras" class="button">Learn more</a>
           </div>
         </article>
       ))}
@@ -77,36 +77,40 @@ const extras = getExtras().filter((extra) => extra.featured);
     </section>
 
     <section class="contact-band">
-      <aside class="contact-card">
-        <SectionTitle>Enquire</SectionTitle>
-        <p>Amy would love to help make your stay even more memorable.</p>
-        <p><a href={`tel:${settings.contact.phone}`}>{settings.contact.phone}</a></p>
-        <p><a href={`mailto:${settings.contact.email}`}>{settings.contact.email}</a></p>
-        <p>{settings.business.area}</p>
-      </aside>
-      <form class="enquiry-form" action={`mailto:${settings.contact.email}`} method="post" enctype="text/plain">
-        <label>
-          <span>Your name</span>
-          <input name="name" autocomplete="name" />
-        </label>
-        <label>
-          <span>Email address</span>
-          <input name="email" type="email" autocomplete="email" />
-        </label>
-        <label>
-          <span>Preferred date</span>
-          <input name="date" type="date" />
-        </label>
-        <label>
-          <span>Number of guests</span>
-          <input name="guests" type="number" min="1" />
-        </label>
-        <label class="full">
-          <span>Tell Amy about your stay</span>
-          <textarea name="message" rows="5"></textarea>
-        </label>
-        <button class="button" type="submit">Send Enquiry</button>
-      </form>
+      <img class="contact-landscape print-art" src="/images/hero-gers-countryside-ink.webp" alt="" width="1774" height="760" />
+      <div class="contact-panel">
+        <aside class="contact-card">
+          <SectionTitle>Enquire</SectionTitle>
+          <p>Amy would love to help make your stay even more memorable.</p>
+          <p><a href={`tel:${settings.contact.phone}`}>{settings.contact.phone}</a></p>
+          <p><a href={`mailto:${settings.contact.email}`}>{settings.contact.email}</a></p>
+          <p>{settings.business.area}</p>
+        </aside>
+        <form class="enquiry-form" action={`mailto:${settings.contact.email}`} method="post" enctype="text/plain">
+          <label>
+            <span>Your name</span>
+            <input name="name" autocomplete="name" placeholder="Your name" />
+          </label>
+          <label>
+            <span>Email address</span>
+            <input name="email" type="email" autocomplete="email" placeholder="Email address" />
+          </label>
+          <label>
+            <span>Preferred date</span>
+            <input name="date" type="date" />
+          </label>
+          <label>
+            <span>Number of guests</span>
+            <input name="guests" type="number" min="1" placeholder="Number of guests" />
+          </label>
+          <label class="full">
+            <span>Tell Amy about your stay</span>
+            <textarea name="message" rows="4" placeholder="Tell Amy about your stay..."></textarea>
+          </label>
+          <button class="button" type="submit">Send Enquiry</button>
+        </form>
+      </div>
+      <img class="contact-branch print-art" src="/images/form-olive-branch.webp" alt="" width="714" height="1501" />
     </section>
 
     <SiteFooter settings={settings} />

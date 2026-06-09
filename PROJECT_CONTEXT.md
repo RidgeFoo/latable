@@ -148,6 +148,39 @@ Use the mockup found in /mockups/mockup.png to help guide the design decisions.
 
 ---
 
+## Responsive Design Targets
+
+Build responsive layouts around width ranges, not fixed device assumptions. The primary desktop fidelity target is **1440px wide**, with the main content capped around **1100–1180px** so the site still feels like refined stationery rather than a stretched app.
+
+Use these viewport sizes when checking visual changes:
+
+```text
+360 x 800
+393 x 851
+430 x 932
+768 x 1024
+1024 x 768
+1280 x 900
+1440 x 1100
+1920 x 1080
+```
+
+Design expectations:
+
+- No horizontal overflow at any viewport width.
+- Header wordmark remains visually centered.
+- Menu cards, extras, steps, and enquiry form stack cleanly on mobile.
+- Forms remain usable on small screens.
+- Illustrations should scale without clipping important subject matter.
+- Desktop pages should remain calm and readable on large screens rather than expanding endlessly.
+
+Current layout breakpoints use the following intent:
+
+- Around **940px and below**: major grids begin stacking.
+- Around **620px and below**: mobile-specific spacing, navigation, cards, and form controls take over.
+
+---
+
 ## Site Structure
 
 The first version should be centred around a strong single-page homepage, with deeper pages available for people who want more detail.
