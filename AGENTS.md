@@ -50,6 +50,19 @@ Playwright is configured in `tests/site.spec.ts` with desktop and mobile Chromiu
 
 Validate content changes by checking the affected page locally, optimizing images, adding accessible text, and keeping pages usable without client-side JavaScript.
 
+For visual or layout changes, check representative viewport widths rather than only one browser size. Use these targets:
+
+- `360 x 800`
+- `393 x 851`
+- `430 x 932`
+- `768 x 1024`
+- `1024 x 768`
+- `1280 x 900`
+- `1440 x 1100`
+- `1920 x 1080`
+
+Treat `1440px` desktop as the main mockup fidelity target. Also verify there is no horizontal overflow, the header wordmark remains centered, cards and forms stack cleanly, and mobile form controls remain usable.
+
 ## Commit & Pull Request Guidelines
 
 This directory is not currently initialized as a Git repository, so no local commit history conventions are available. Use short, imperative commit messages, for example `Add homepage menu preview` or `Update extras content`.
