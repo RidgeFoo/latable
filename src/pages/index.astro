@@ -1,10 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import amyPortrait from '@/assets/images/amy-portrait-engraving-ink.webp';
+import bookendSprig from '@/assets/images/bookend-sprig.webp';
+import celebrationCake from '@/assets/images/celebration-cake-engraving-ink.webp';
+import formOliveBranch from '@/assets/images/form-olive-branch.webp';
+import fridgeStock from '@/assets/images/fridge-stock-engraving-ink.webp';
+import gersCountryside from '@/assets/images/hero-gers-countryside-ink.webp';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
 import MenuCard from '@/components/MenuCard.astro';
 import SectionTitle from '@/components/SectionTitle.astro';
-import { getExtras, getMenusWithDesserts, getSettings } from '@/lib/content.js';
+import { getExtras, getMenusWithDesserts, getSettings } from '@/lib/content';
 
 const settings = getSettings();
 const menus = getMenusWithDesserts().filter((menu) => menu.featured);
@@ -17,18 +24,20 @@ const extras = getExtras().filter((extra) => extra.featured);
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <img class="sprig-mark hero-sprig" src="/images/olive-sprig-mark.webp" alt="" width="96" height="40" />
         <h1 id="hero-title">Home-cooked meals delivered to your gîte in the Gers</h1>
         <p>Relax and enjoy your stay. Amy prepares and delivers delicious, seasonal meals straight to your door.</p>
-        <p class="bookended-action"><a class="button" href="/menus">View Menus</a></p>
+        <p class="bookended-action">
+          <a class="button" href="/menus">View Menus</a>
+          <Image src={bookendSprig} alt="" width={37} layout="fixed" quality="high" class="action-sprig" loading="eager"/>
+        </p>
       </div>
-      <img class="hero-image print-art" src="/images/hero-gers-countryside-ink.webp" alt="Sepia engraving of a farmhouse in the Gers countryside" width="1774" height="760" />
+      <Image class="hero-image print-art" src={gersCountryside} alt="Sepia engraving of a farmhouse in the Gers countryside" width={1200} layout="constrained" quality="high" priority />
     </section>
 
     <section class="about-band">
-      <img class="portrait print-art" src="/images/amy-portrait-engraving-ink.webp" alt="Sepia engraving portrait of Amy" width="1254" height="1254" />
+      <Image class="portrait print-art" src={amyPortrait} alt="Sepia engraving portrait of Amy" width={190} layout="fixed" quality="high" loading="eager"/>
       <div>
-        <div id="about-title"><h2>ABOUT AMY</h2><img id="about-flourish" src="/images/olive-sprig-mark.webp"></div>
+        <SectionTitle variant="inline" imgLoading='eager'>About Amy</SectionTitle>
         <p>I love to cook nourishing, flavourful food using the best local ingredients. Whether you are here for a weekend escape or a longer holiday, I will take care of the cooking so you can focus on making memories.</p>
         <p>All meals are home-cooked, delivered ready to heat and enjoy.</p>
       </div>
@@ -39,13 +48,17 @@ const extras = getExtras().filter((extra) => extra.featured);
       <div class="menu-grid">
         {menus.map((menu) => <MenuCard menu={menu} priceLabel={settings.pricing.menuPriceLabel} />)}
       </div>
-      <p class="centered bookended-action"><a class="button" href="/menus">View Full Menus</a></p>
+      <p class="centered bookended-action">
+        <Image src={bookendSprig} alt="" width={37} layout="fixed" quality="high" class="action-sprig action-sprig-left" />
+        <a class="button" href="/menus">View Full Menus</a>
+        <Image src={bookendSprig} alt="" width={37} layout="fixed" quality="high" class="action-sprig" />
+      </p>
     </section>
 
     <section class="extras-preview" aria-label="Extras preview">
       {extras.map((extra) => (
         <article>
-          <img class="extra-art print-art" src={extra.slug === 'fridge-stock' ? '/images/fridge-stock-engraving-ink.webp' : '/images/celebration-cake-engraving-ink.webp'} alt="" width="300" height="300" />
+          <Image class="extra-art print-art" src={extra.slug === 'fridge-stock' ? fridgeStock : celebrationCake} alt="" width={140} layout="fixed" quality="high" />
           <div>
             <h2>{extra.title}</h2>
             <p>{extra.summary}</p>
@@ -77,8 +90,8 @@ const extras = getExtras().filter((extra) => extra.featured);
     </section>
 
     <section class="contact-band">
-      <img class="contact-landscape print-art" src="/images/hero-gers-countryside-ink.webp" alt="" width="1774" height="760" />
-      <div class="contact-panel">
+      <Image class="contact-landscape print-art" src={gersCountryside} alt="" width={564} layout="constrained" quality="high" />
+      <div class="contact-panel" id="enquire">
         <aside class="contact-card">
           <SectionTitle>Enquire</SectionTitle>
           <p>Amy would love to help make your stay even more memorable.</p>
@@ -110,7 +123,7 @@ const extras = getExtras().filter((extra) => extra.featured);
           <button class="button" type="submit">Send Enquiry</button>
         </form>
       </div>
-      <img class="contact-branch print-art" src="/images/form-olive-branch.webp" alt="" width="714" height="1501" />
+      <Image class="contact-branch print-art" src={formOliveBranch} alt="" width={170} layout="fixed" quality="high" />
     </section>
 
     <SiteFooter settings={settings} />

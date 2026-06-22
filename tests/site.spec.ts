@@ -15,9 +15,21 @@ test.describe('static pages', () => {
       await page.goto(route);
       await expect(page.locator('body')).toBeVisible();
       await expect(page.getByRole('link', { name: "La Table d'Amy home" })).toBeVisible();
+      await expect(page.locator('img:not([src^="/_astro/"])')).toHaveCount(0);
+      await expect(page.locator('img:not([width]), img:not([height]), img:not([alt])')).toHaveCount(0);
       expect(errors).toEqual([]);
     });
   }
+});
+
+test('homepage serves responsive Astro image assets', async ({ page }) => {
+  await page.goto('/');
+
+  const heroImage = page.locator('.hero-image');
+  await expect(heroImage).toHaveAttribute('srcset', /\/_astro\//);
+  await expect(heroImage).toHaveAttribute('loading', 'eager');
+  await expect(heroImage).toHaveAttribute('decoding', 'sync');
+  await expect(heroImage).toHaveAttribute('fetchpriority', 'high');
 });
 
 test('homepage shows the full visitor journey', async ({ page }) => {

@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import celebrationCake from '@/assets/images/celebration-cake-engraving-ink.webp';
+import fridgeStock from '@/assets/images/fridge-stock-engraving-ink.webp';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
 import SectionTitle from '@/components/SectionTitle.astro';
-import { getExtras, getSettings } from '@/lib/content.js';
+import { getExtras, getSettings } from '@/lib/content';
 
 const settings = getSettings();
 const extras = getExtras();
@@ -19,7 +22,7 @@ const extras = getExtras();
     <section class="feature-list">
       {extras.map((extra) => (
         <article>
-          <img class="extra-art print-art" src={extra.slug === 'fridge-stock' ? '/images/fridge-stock-engraving-ink.webp' : '/images/celebration-cake-engraving-ink.webp'} alt="" width="320" height="320" />
+          <Image class="extra-art print-art" src={extra.slug === 'fridge-stock' ? fridgeStock : celebrationCake} alt="" width={140} layout="fixed" quality="high" />
           <div>
             <h2>{extra.title}</h2>
             <p>{extra.summary}</p>

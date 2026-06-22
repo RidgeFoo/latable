@@ -12,15 +12,16 @@ When implementation begins, keep the site simple and static. Prefer `src/pages/`
 
 ## Build, Test, and Development Commands
 
-No package manifest exists yet, so there are no runnable commands. After the Astro scaffold is added, keep this section aligned with `package.json`.
+The Astro site is configured through `package.json`; keep this section aligned with its scripts.
 
 Key commands:
 
 - `npm install`: install dependencies.
 - `npm run dev`: run the local Astro dev server.
+- `npm run check`: type-check Astro and TypeScript files.
 - `npm run build`: generate the static site for Cloudflare Pages.
 - `npm run preview`: preview the production build locally.
-- `npm test`: build the site, start Astro preview, and run Playwright checks.
+- `npm test`: type-check, build the site, start Astro preview, and run Playwright checks.
 
 ## Local Server Process Handling
 
@@ -46,7 +47,7 @@ Name Astro components in `PascalCase`, such as `MenuPreview.astro`. Use kebab-ca
 
 ## Testing Guidelines
 
-Playwright is configured in `tests/site.spec.ts` with desktop and mobile Chromium projects. Run `npm test` before submitting changes; it builds the static site and tests the production preview.
+Playwright is configured in `tests/site.spec.ts` with desktop and mobile Chromium projects. Run `npm test` before submitting changes; it type-checks, builds the static site, and tests the production preview.
 
 Validate content changes by checking the affected page locally, optimizing images, adding accessible text, and keeping pages usable without client-side JavaScript.
 

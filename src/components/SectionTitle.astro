@@ -1,3 +1,22 @@
-<div class="section-title">
-  <h2><slot /></h2>
+---
+import { Image } from 'astro:assets';
+import bookendSprig from '@/assets/images/bookend-sprig.webp';
+import oliveSprig from '@/assets/images/olive-sprig-mark-v2.webp';
+
+interface Props {
+  variant?: 'default' | 'inline';
+  imgLoading?: 'eager' | 'lazy';
+}
+
+const { variant = 'default', imgLoading = 'lazy' } = Astro.props;
+const className = variant === 'inline' ? 'section-title section-title-inline' : 'section-title';
+const sprig = variant === 'inline' ? oliveSprig : bookendSprig;
+const sprigWidth = variant === 'inline' ? 44 : 27;
+---
+
+<div class={className}>
+  <div class="section-title-content">
+    <h2><slot /></h2>
+    <Image src={sprig} alt="" width={sprigWidth} layout="fixed" quality="high" class="section-title-sprig" loading={imgLoading}/>
+  </div>
 </div>

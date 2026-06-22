@@ -1,9 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import footerBranch from '@/assets/images/olive-branch-ornament.webp';
+import type { Settings } from '@/lib/content';
+
+interface Props {
+  settings: Settings;
+}
+
 const { settings } = Astro.props;
 ---
 
 <footer class="site-footer">
-  <img src="/images/olive-branch-ornament.webp" alt="" width="92" height="22" />
+  <Image src={footerBranch} alt="" width={72} layout="fixed" quality="high" class="footer-ornament" />
   <nav aria-label="Footer navigation">
     <a href="/">Home</a>
     <a href="/about">About</a>

@@ -1,4 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import bookendSprig from '@/assets/images/bookend-sprig.webp';
+import type { MenuWithDesserts } from '@/lib/content';
+
+interface Props {
+  menu: MenuWithDesserts;
+  priceLabel: string;
+  detailed?: boolean;
+}
+
 const { menu, priceLabel, detailed = false } = Astro.props;
 const mains = detailed ? menu.mains : menu.mains.slice(0, 3);
 ---
@@ -11,8 +21,11 @@ const mains = detailed ? menu.mains : menu.mains.slice(0, 3);
   <ul class="dish-list">
     {mains.map((main) => (
       <li>
-        <strong>{main.title}</strong>
-        <span>{main.description}</span>
+        <Image src={bookendSprig} alt="" width={15} layout="fixed" quality="high" class="dish-marker" />
+        <div class="dish-copy">
+          <strong>{main.title}</strong>
+          <span>{main.description}</span>
+        </div>
       </li>
     ))}
   </ul>
@@ -22,8 +35,11 @@ const mains = detailed ? menu.mains : menu.mains.slice(0, 3);
       <ul>
         {menu.dessertOptions.map((dessert) => (
           <li>
-            <strong>{dessert.title}</strong>
-            <span>{dessert.description}{dessert.supplement ? ` (+€${dessert.supplement})` : ''}</span>
+            <Image src={bookendSprig} alt="" width={15} layout="fixed" quality="high" class="dish-marker" />
+            <div class="dish-copy">
+              <strong>{dessert.title}</strong>
+              <span>{dessert.description}{dessert.supplement ? ` (+€${dessert.supplement})` : ''}</span>
+            </div>
           </li>
         ))}
       </ul>

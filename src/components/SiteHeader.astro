@@ -1,4 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import oliveSprig from '@/assets/images/olive-sprig-mark-v2.webp';
+import type { Settings } from '@/lib/content';
+
+interface Props {
+  settings: Settings;
+}
+
 const { settings } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const leftLinks = [
@@ -10,7 +18,7 @@ const rightLinks = [
   { href: '/extras', label: 'Extras' },
   { href: '/contact', label: 'Contact' }
 ];
-const isCurrent = (href) => href === '/' ? currentPath === '/' : currentPath === href;
+const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath === href;
 ---
 
 <header class="site-header">
@@ -21,7 +29,7 @@ const isCurrent = (href) => href === '/' ? currentPath === '/' : currentPath ===
       ))}
     </div>
     <a href="/" class="brand" aria-label="La Table d'Amy home">
-      <img class="sprig-mark brand-sprig" src="/images/olive-sprig-mark.webp" alt="" width="78" height="33" />
+      <Image src={oliveSprig} alt="" width={54} layout="fixed" quality="high" class="sprig-mark brand-sprig" loading="eager"/>
       <span>{settings.business.name}</span>
       <small>Meal delivery in the Gers</small>
     </a>
@@ -29,7 +37,7 @@ const isCurrent = (href) => href === '/' ? currentPath === '/' : currentPath ===
       {rightLinks.map((link) => (
         <a href={link.href} class="nav-link" aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
       ))}
-      <a href="/contact" class="button button-small">Enquire</a>
+      <a href="#enquire" class="button button-small">Enquire</a>
     </div>
   </nav>
 </header>

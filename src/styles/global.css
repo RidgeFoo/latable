@@ -216,30 +216,20 @@ p {
   margin: 18px 0 0;
 }
 
-.bookended-action::after {
-  content: "";
-  flex: 0 0 42px;
-  width: 42px;
-  height: 25px;
-  background: url("/images/bookend-sprig.webp") center / contain no-repeat;
+.action-sprig {
+  display: block;
+  flex: 0 0 auto;
   opacity: 0.88;
   mix-blend-mode: multiply;
+}
+
+.action-sprig-left {
+  transform: scaleX(-1);
 }
 
 .centered {
   justify-content: center;
   text-align: center;
-}
-
-.centered.bookended-action::before {
-  content: "";
-  flex: 0 0 42px;
-  width: 42px;
-  height: 25px;
-  background: url("/images/bookend-sprig.webp") center / contain no-repeat;
-  opacity: 0.88;
-  mix-blend-mode: multiply;
-  transform: scaleX(-1);
 }
 
 .hero {
@@ -253,10 +243,6 @@ p {
 
 .hero-copy {
   text-align: left;
-}
-
-.hero-sprig {
-  display: none;
 }
 
 h1 {
@@ -318,42 +304,46 @@ h1 {
   background: rgba(138, 107, 74, 0.32);
 }
 
-.section-title h2 {
+.section-title-content {
   display: grid;
   justify-items: center;
   gap: 8px;
+}
+
+.section-title h2 {
   margin: 0;
   font-size: clamp(1.16rem, 2.15vw, 1.55rem);
   font-weight: 400;
 }
 
-.section-title h2::after {
-  content: "";
-  width: 38px;
-  height: 18px;
-  background: url("/images/bookend-sprig.webp") center / contain no-repeat;
+.section-title-sprig {
+  display: block;
   opacity: 0.82;
   mix-blend-mode: multiply;
 }
 
-#about-flourish {
-  width: 38px;
-  height: 18px;
-  opacity: 0.82;
-  mix-blend-mode: multiply;
+.section-title-inline {
+  grid-template-columns: auto;
+  justify-content: start;
+  width: fit-content;
+  text-align: left;
 }
 
-#about-title {
+.section-title-inline::before,
+.section-title-inline::after {
+  content: none;
+}
+
+.section-title-inline .section-title-content {
   display: flex;
-  gap: 14px;
   align-items: center;
-  margin-bottom: clamp(12px, 1.8vw, 18px);
+  justify-content: flex-start;
+  gap: clamp(10px, 1.5vw, 16px);
+  white-space: nowrap;
 }
 
-#about-title h2 {
-  margin-bottom: 0px;
-  font-size: clamp(1.16rem, 2.15vw, 1.55rem);
-  font-weight: 400;
+.section-title-inline h2 {
+  white-space: nowrap;
 }
 
 .about-band {
@@ -362,17 +352,6 @@ h1 {
   justify-content: center;
   gap: clamp(22px, 4.2vw, 48px);
   align-items: center;
-}
-
-.about-band .section-title {
-  grid-template-columns: auto;
-  justify-content: start;
-  text-align: left;
-}
-
-.about-band .section-title::before,
-.about-band .section-title::after {
-  content: none;
 }
 
 .standalone {
@@ -469,22 +448,23 @@ h1 {
 
 .dish-list li,
 .desserts li {
-  position: relative;
+  display: grid;
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
   margin: 14px 0;
-  padding-left: 24px;
+  padding: 0;
 }
 
-.dish-list li::before,
-.desserts li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.25em;
-  width: 15px;
-  height: 10px;
-  background: url("/images/bookend-sprig.webp") center / contain no-repeat;
+.dish-marker {
+  display: block;
+  margin-top: 0.25em;
   opacity: 0.86;
   mix-blend-mode: multiply;
+}
+
+.dish-copy {
+  min-width: 0;
 }
 
 .dish-list strong,
@@ -831,9 +811,14 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .about-band,
-  .about-band .section-title {
+  .about-band {
     justify-items: center;
+    text-align: center;
+  }
+
+  .about-band .section-title-inline {
+    justify-content: center;
+    justify-self: center;
     text-align: center;
   }
 
@@ -907,6 +892,10 @@ textarea {
     gap: 12px;
   }
 
+  .section-title-inline {
+    grid-template-columns: auto;
+  }
+
   .about-band,
   .section,
   .extras-preview,
@@ -944,8 +933,7 @@ textarea {
     width: 100%;
   }
 
-  .centered.bookended-action::before,
-  .bookended-action::after {
-    content: none;
+  .action-sprig {
+    display: none;
   }
 }
