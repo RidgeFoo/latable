@@ -144,7 +144,7 @@ Desired aesthetic:
 
 The site should not look like a generic restaurant template, SaaS site, or overly polished corporate site.
 
-Use the mockup found in /mockups/mockup.png to help guide the design decisions.
+Use the mockup found in `/mockups/simple-charming-homepage-v1.png` to help guide the design decisions.
 
 ---
 
@@ -568,7 +568,7 @@ Longer copy can be written below the frontmatter in Markdown.
 
 ---
 
-## Suggested Technical Project Structure
+## Technical Project Structure
 
 ```text
 src/
@@ -580,16 +580,16 @@ src/
     contact.astro
 
   components/
-    Header.astro
-    Hero.astro
-    AboutAmy.astro
-    MenuPreview.astro
     MenuCard.astro
-    ExtrasPreview.astro
-    HowItWorks.astro
-    EnquiryForm.astro
-    Footer.astro
-    Ornament.astro
+    SectionTitle.astro
+    SiteFooter.astro
+    SiteHeader.astro
+
+  layouts/
+    BaseLayout.astro
+
+  lib/
+    content.ts
 
   content/
     settings.yaml
@@ -612,35 +612,15 @@ src/
     global.css
 
   assets/
-    paper-texture.avif
-    olive-branch-ornament.webp
-    olive-sprig-mark.webp
-    bookend-sprig.webp
-    divider-flourish.svg
-    page-corner-flourish-source.png
-    page-border-corner-tl.webp
-    page-border-corner-tr.webp
-    page-border-corner-bl.webp
-    page-border-corner-br.webp
-    page-frame-source.png (legacy, superseded for the active page border)
-    page-frame.webp (legacy, superseded for the active page border)
-    page-corner-flourish-tl.webp
-    page-corner-flourish-tr.webp
-    page-corner-flourish-bl.webp
-    page-corner-flourish-br.webp
-    card-corner-flourish-source.png
-    card-frame-source.png
-    card-frame.webp
-    card-corner-flourish-tl.webp
-    card-corner-flourish-tr.webp
-    card-corner-flourish-bl.webp
-    card-corner-flourish-br.webp
-    form-olive-branch-source.png
-    form-olive-branch.webp
-    countryside.avif
-    farmhouse.avif
-    cake.avif
-    fridge.avif
+    images/
+      amy-portrait-engraving-ink.webp
+      bookend-sprig.webp
+      celebration-cake-engraving-ink.webp
+      form-olive-branch.webp
+      fridge-stock-engraving-ink.webp
+      hero-gers-countryside-ink.webp
+      olive-branch-ornament.webp
+      olive-sprig-mark-v2.webp
 ```
 
 ---

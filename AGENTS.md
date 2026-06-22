@@ -6,7 +6,7 @@ This repository currently contains planning and design assets for the La Table d
 
 - `PROJECT_CONTEXT.md`: product goals, preferred stack, site structure, design direction, and deployment notes.
 - `TODO.md`: task tracking placeholder.
-- `mockups/mockup.png`: visual reference for the warm, rustic French-country design.
+- `mockups/simple-charming-homepage-v1.png`: visual reference for the simpler warm, rustic French-country design.
 
 When implementation begins, keep the site simple and static. Prefer `src/pages/` for routes, `src/components/` for reusable markup, `src/content/` or `src/data/` for editable Markdown/YAML content, and `public/` for optimized images, SVGs, and fonts.
 
