@@ -7,16 +7,17 @@ interface Props {
   settings: Settings;
 }
 
+const baseURL = import.meta.env.BASE_URL;
 const { settings } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const leftLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' }
+  { href: baseURL, label: 'Home' },
+  { href: baseURL + '/about', label: 'About' }
 ];
 const rightLinks = [
-  { href: '/menus', label: 'Menus' },
-  { href: '/extras', label: 'Extras' },
-  { href: '/contact', label: 'Contact' }
+  { href: baseURL + '/menus', label: 'Menus' },
+  { href: baseURL + '/extras', label: 'Extras' },
+  { href: baseURL + '/contact', label: 'Contact' }
 ];
 const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath === href;
 ---
@@ -28,7 +29,7 @@ const isCurrent = (href: string) => href === '/' ? currentPath === '/' : current
         <a href={link.href} class="nav-link" aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
       ))}
     </div>
-    <a href="/" class="brand" aria-label="La Table d'Amy home">
+    <a href={baseURL} class="brand" aria-label="La Table d'Amy home">
       <Image src={oliveSprig} alt="" width={54} layout="fixed" quality="high" class="sprig-mark brand-sprig" loading="eager"/>
       <span>{settings.business.name}</span>
       <small>Meal delivery in the Gers</small>

@@ -8,16 +8,17 @@ interface Props {
 }
 
 const { settings } = Astro.props;
+const baseURL = import.meta.env.BASE_URL;
 ---
 
 <footer class="site-footer">
   <Image src={footerBranch} alt="" width={72} layout="fixed" quality="high" class="footer-ornament" />
   <nav aria-label="Footer navigation">
     <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/menus">Menus</a>
-    <a href="/extras">Extras</a>
-    <a href="/contact">Contact</a>
+    <a href= {baseURL + "/about"}>About</a>
+    <a href= {baseURL + "/menus"}>Menus</a>
+    <a href= {baseURL + "/extras"}>Extras</a>
+    <a href= {baseURL + "/contact"}>Contact</a>
   </nav>
   <p>© 2026 {settings.business.name} | Meal delivery in the Gers</p>
 </footer>
